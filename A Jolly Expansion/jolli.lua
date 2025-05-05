@@ -365,12 +365,13 @@ SMODS.Joker {
             if context.other_card:get_id() == 12 and
             context.other_card:get_seal() ~= "jolli_squirrel"
             then
+                local queen = context.other_card
                 G.E_MANAGER:add_event(Event({func = function()
                     play_sound('tarot1')
-                    context.other_card:juice_up(0.3, 0.5)
+                    queen:juice_up(0.3, 0.5)
                     return true end }))
                 G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.1, func = function()
-                    context.other_card:set_seal('jolli_squirrel', nil, true)
+                    queen:set_seal('jolli_squirrel', nil, true)
                     return true end }))
 
                 card.ability.extra.mult_mod = card.ability.extra.mult_mod + card.ability.extra.mod
